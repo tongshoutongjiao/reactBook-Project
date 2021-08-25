@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .pr {
+            background: lightblue;
+        }
+        
+        .fl1 {
+            background: red;
+            float: left;
+        }
+        
+        .fl2 {
+            background: lightblue;
+            float: left;
+        }
+        
+        .normal {
+            background: yellow;
+            height: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="pr">
+        <div class="fl1">1</div>
+        <div class="fl2">2</div>
+
+    </div>
+    <div class="normal">
+
+    </div>
+
+
+    <script type="text/javascript">
+        console.log('1 script start');
+
+        setTimeout(() => {
+            console.log('8 settimeout')
+        }, 1000)
+
+        Promise.resolve()
+            .then(function() {  
+                console.log("3 promise1");
+            })
+            .then(function() {  
+                console.log("6 promise2");
+            });
+
+        async function errorFunc() { 
+            try {  
+                await Promise.reject("error!!!");
+            } catch (e) {  
+                console.log("4 error caught"); // 微1-3
+            } 
+            console.log("5 errorFunc"); 
+            return Promise.resolve("errorFunc success");
+        }
+        errorFunc().then((res) => console.log(" 7 errorFunc then res"));
+
+        console.log(" 2 script end");
+
+
+        //
+    </script>
+</body>
+
+
+</html>
