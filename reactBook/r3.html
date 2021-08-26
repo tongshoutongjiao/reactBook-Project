@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="wrapper">
+
+    </div>
+
+</body>
+<script>
+    //  结构复用
+
+    class LikeButton {
+
+        //  构造函数私有属性
+        constructor() {
+            this.state = {
+                isLiked: false
+            }
+        }
+
+        // 
+        setState(state) {
+            const oldEl = this.el;
+            this.state = state;
+            this.el = this.render();
+            if (this.onStateChange) this.onStateChange(oldEl, this.el)
+
+        }
+
+        //  点赞函数
+
+        changeLikeText() {
+            console.log('更新操作')
+            this.setState({
+                isLiked: !this.state.isLiked
+            })
+        }
+
+
+
+        // 渲染函数
+
+        render() {
+
+            this.el = createDOMFromString(`
+            <button class="like-btn">
+            <span class="like-text">${this.state.isLiked ? '取消' : '点赞'}</span>
+            <span>👍</span>
+            </button> `);
+
+            this.el.addEventListener('click', this.changeLikeText.bind(this), false);
+
+            return this.el
+
+        }
+    }
+
+
+
+    //  接收字符串，返回对应的dom 结构
+    function createDOMFromString(domString) {
+
+        const div = document.createElement('div');
+        div.innerHTML = domString
+
+        return div;
+
+    }
+
+
+    const wrapper = document.querySelector('.wrapper');
+
+    const likeButton1 = new LikeButton();
+
+    wrapper.appendChild(likeButton1.render()); // 第一次插入 DOM 元素
+
+    // 更新Dom操作
+    likeButton1.onStateChange = (oldEl, newEl) => {
+        wrapper.insertBefore(newEl, oldEl) // 插入新的元素
+        wrapper.removeChild(oldEl) // 删除旧的元素
+    }
+</script>
+
+</html>
