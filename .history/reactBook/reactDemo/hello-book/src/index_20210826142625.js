@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import CommentApp from './CommentApp'
 import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
 
 class Title extends Component {
 
@@ -74,6 +75,6 @@ class Index extends Component {
 
 
 
-ReactDOM.render(<CommentApp></CommentApp>,
+ReactDOM.render(<Index></Index>,
   document.getElementById('root')
   )

@@ -80,28 +80,3 @@ code {
 .comment-field-button button:active {
     background: #13c1f1;
 }
-
-
-/* 评论列表样式 */
-
-.comment {
-    display: flex;
-    border-bottom: 1px solid #f1f1f1;
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-    min-height: 50px;
-}
-
-.comment .comment-user {
-    flex-shrink: 0;
-}
-
-.comment span {
-    color: #00a3cf;
-    font-style: italic;
-}
-
-.comment p {
-    margin: 0;
-    /*text-indent: 2em;*/
-}
