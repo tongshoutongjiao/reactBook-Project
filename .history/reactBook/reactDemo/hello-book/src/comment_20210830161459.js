@@ -33,10 +33,6 @@ export default class Comment extends Component {
         })
       }
 
-      _getProcessedContent (content) {
-        return content.replace(/`([\S\s]+?)`/g, '<code>$1</code>')
-      }
-
       handleDeleteComment () {
         if (this.props.onDeleteComment) {
           this.props.onDeleteComment(this.props.index)
@@ -49,7 +45,11 @@ export default class Comment extends Component {
     
 
     render(){
-        const comment=this.props.comment;
+
+        console.log('查看当前评论的内容')
+        console.log(this.props.comment)
+
+
 
 
         return (

@@ -1,15 +1,8 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 
 console.log('评论输入功能')
 
 export default class CommentInput extends Component {
-
-    static propTypes = {
-        onSubmit: PropTypes.func
-      }
-
-    
 
     constructor(){
         super()
@@ -19,33 +12,8 @@ export default class CommentInput extends Component {
 
 
         }
-    }
-    componentWillMount(){
-        this._loadUsername()
-    }
-
-    componentDidMount(){
-        this.textarea.focus()
-    }
-
-    _loadUsername(){
-        const username=localStorage.getItem('username');
-        if(username){
-            this.setState({username})
-        }
-
 
     }
-
-    _saveUsername (username) {
-        localStorage.setItem('username', username)
-    }
-
-
-
-
-
-
     handleUsernameChange(event){
 
         this.setState({
@@ -63,17 +31,13 @@ export default class CommentInput extends Component {
     handleSubmit(){
         if (this.props.onSubmit) {
             const { username, content } = this.state
-            this.props.onSubmit({username, content,createdTime:+new Date()})
+            this.props.onSubmit({username, content})
           }
           this.setState({ content: '' })
 
     }
 
-    handleUsernameBlur(event){
-        this._saveUsername(event.target.value)
-    }
 
-   
 
 
 
@@ -86,7 +50,7 @@ export default class CommentInput extends Component {
                     <div className='comment-field'>
                         <span className='comment-field-name'>用户名：</span>
                         <div className='comment-field-input'>
-                         <input value={this.state.username} onBlur={this.handleUsernameBlur.bind(this)} onChange={this.handleUsernameChange.bind(this)}/>
+                         <input value={this.state.username} onChange={this.handleUsernameChange.bind(this)}/>
                         </div>
                     </div>
 

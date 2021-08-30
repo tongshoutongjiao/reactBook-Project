@@ -33,23 +33,19 @@ export default class Comment extends Component {
         })
       }
 
-      _getProcessedContent (content) {
-        return content.replace(/`([\S\s]+?)`/g, '<code>$1</code>')
-      }
-
       handleDeleteComment () {
         if (this.props.onDeleteComment) {
           this.props.onDeleteComment(this.props.index)
         }
       }
-
-      componentWillUnmount () {
-        clearInterval(this._timer)
-      }
     
 
     render(){
-        const comment=this.props.comment;
+
+        console.log('查看当前评论的内容')
+        console.log(this.props.comment)
+
+
 
 
         return (
@@ -57,7 +53,7 @@ export default class Comment extends Component {
              <div className='comment-user'>
                 <span>{this.props.comment.username} </span>：
              </div>
-                <p dangerouslySetInnerHTML={{__html:this._getProcessedContent(comment.content)}}></p>
+                <p>{this.props.comment.content}</p>
                 <span className='comment-createdtime'>
                 {this.state.timeString}
                 </span>

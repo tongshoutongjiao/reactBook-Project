@@ -7,18 +7,11 @@ export default class CommentList extends Component {
     static propTypes = {
         comments: PropTypes.array,
         onDeleteComment: PropTypes.func
-    }
+      }
 
     static defaultProps = {
         comments: []
       }
-
-      handleDeleteComment (index) {
-        if (this.props.onDeleteComment) {
-          this.props.onDeleteComment(index)
-        }
-      }
-    
 
     render(){ 
         return (
@@ -26,7 +19,7 @@ export default class CommentList extends Component {
               {
                   this.props.comments.map((comment,i)=>{
                      
-                     return <Comment comment={comment} key={i} index={i}  onDeleteComment={this.handleDeleteComment.bind(this)}></Comment>
+                     return <Comment comment={comment} key={i}></Comment>
                   })
               }
             </div>

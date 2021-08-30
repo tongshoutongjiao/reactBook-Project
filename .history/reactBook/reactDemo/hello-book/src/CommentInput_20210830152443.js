@@ -37,12 +37,6 @@ export default class CommentInput extends Component {
 
     }
 
-    _saveUsername (username) {
-        localStorage.setItem('username', username)
-    }
-
-
-
 
 
 
@@ -63,7 +57,7 @@ export default class CommentInput extends Component {
     handleSubmit(){
         if (this.props.onSubmit) {
             const { username, content } = this.state
-            this.props.onSubmit({username, content,createdTime:+new Date()})
+            this.props.onSubmit({username, content})
           }
           this.setState({ content: '' })
 
@@ -73,7 +67,11 @@ export default class CommentInput extends Component {
         this._saveUsername(event.target.value)
     }
 
-   
+    _saveUsername (username) {
+        localStorage.setItem('username', username)
+    }
+
+
 
 
 

@@ -54,7 +54,7 @@ export default class CommentApp extends Component {
         const comments=this.state.comments;
         comments.splice(index,1);
         this.setState({comments});
-        this._saveComments(comments)
+        this,this._saveComments(comments)
 
     }
 

@@ -121,22 +121,12 @@ code {
     color: #00a3cf;
 }
 
-.comment-delete {
-    position: absolute;
-    right: 0;
-    top: 0;
-    color: transparent;
-    font-size: 12px;
-    cursor: pointer;
+.comment span {
+    color: #00a3cf;
+    font-style: italic;
 }
 
 .comment p {
     margin: 0;
     /*text-indent: 2em;*/
-}
-
-code {
-    border: 1px solid #ccc;
-    background: #f9f9f9;
-    padding: 0px 2px;
 }
