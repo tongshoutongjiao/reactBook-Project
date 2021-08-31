@@ -124,10 +124,6 @@ class Footer extends Component {
 
 
 
-ReactDOM.render(<ContextApp></ContextApp>,
+ReactDOM.render(<CommentApp></CommentApp>,
   document.getElementById('root')
   )
-
-// ReactDOM.render(<CommentApp></CommentApp>,
-//   document.getElementById('root')
-//   )

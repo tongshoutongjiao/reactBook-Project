@@ -7,8 +7,7 @@ console.log('评论输入功能')
  class CommentInput extends Component {
 
     static propTypes = {
-        onSubmit: PropTypes.func,
-        saveData:PropTypes.func
+        onSubmit: PropTypes.func
     }
 
     

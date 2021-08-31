@@ -4,24 +4,25 @@ import wrapWithLoadData from './wrapWithLoadData'
 
 console.log('评论输入功能')
 
- class CommentInput extends Component {
+export default class CommentInput extends Component {
 
     static propTypes = {
-        onSubmit: PropTypes.func,
-        saveData:PropTypes.func
-    }
+        onSubmit: PropTypes.func
+      }
 
     
 
-    constructor(props){
-        super(props)
+    constructor(){
+        super()
         this.state={
-            username:props.data,
+            username:'',
             content:''
+
+
         }
     }
     componentWillMount(){
-        // this._loadUsername()
+        this._loadUsername()
     }
 
     componentDidMount(){
@@ -70,8 +71,7 @@ console.log('评论输入功能')
     }
 
     handleUsernameBlur(event){
-        // this._saveUsername(event.target.value)
-        this.props.saveData(event.target.value)
+        this._saveUsername(event.target.value)
     }
 
    
@@ -115,7 +115,3 @@ console.log('评论输入功能')
  
 
 }
-
-CommentInput=wrapWithLoadData(CommentInput,'username');
-
-export default CommentInput
