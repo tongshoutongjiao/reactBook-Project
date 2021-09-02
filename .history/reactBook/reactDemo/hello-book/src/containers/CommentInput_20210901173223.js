@@ -1,0 +1,5 @@
+import React,{Component} from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import CommentInput from '../components/CommentInput'
+import { addComment } from '../reducers/comments'

@@ -1,0 +1,5 @@
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import ReactDOM from 'react-dom'
+import Header from './Header'
+import Content from './Content'

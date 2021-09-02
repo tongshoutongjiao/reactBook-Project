@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import CommentInput from './CommentInput'
-import CommentList from './CommentList'
+import CommentInput from './components/CommentInput'
+import CommentList from './components/CommentList'
 import wrapWithLoadData from './wrapWithLoadData'
 
 

@@ -16,4 +16,8 @@ ReactDOM.render(
   <CommentApp />
 </Provider>,
   document.getElementById('root')
-)
+  )
+
+// ReactDOM.render(<CommentApp></CommentApp>,
+//   document.getElementById('root')
+//   )
