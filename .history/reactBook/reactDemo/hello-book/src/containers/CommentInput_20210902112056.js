@@ -57,7 +57,8 @@ class CommentInputContainer extends Component {
     }
 
     render() {
-        return ( <CommentInput username = { this.state.username }
+        return ( <
+            CommentInput username = { this.state.username }
             onUserNameInputBlur = { this._saveUsername.bind(this) }
             onSubmit = { this.handleSubmitComment.bind(this) }
             />
@@ -76,9 +77,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 
-  console.log('查看和使用redux')
-  console.log(dispatch)
-
+    console.log(dispatch)
     return {
         onSubmit: (comment) => {
             dispatch(addComment(comment))

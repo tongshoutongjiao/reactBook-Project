@@ -48,8 +48,10 @@ class CommentListContainer extends Component {
     }
 
     render() {
-        return ( <CommentList comments = { this.props.comments }
-            onDeleteComment = { this.handleDeleteComment.bind(this) }/>
+        return ( <
+            CommentList comments = { this.props.comments }
+            onDeleteComment = { this.handleDeleteComment.bind(this) }
+            />
         )
     }
 }
@@ -70,7 +72,7 @@ const mapDispatchToProps = (dispatch) => {
         initComments: (comments) => {
             dispatch(initComments(comments))
         },
-
+        
         // 删除评论
         onDeleteComment: (commentIndex) => {
             dispatch(deleteComment(commentIndex))

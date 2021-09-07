@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>我的测试</div>
+    <div class="wrapper"></div>
+
+    <script>
+        console.log('查看渲染数据');
+
+        function createDOMFromString(str) {
+            let wrapper = document.createElement('div');
+            wrapper.innerHTML = str;
+            return wrapper;
+        }
+
+
+        class Component {
+            setState(state) {
+                const oldEl = this.el
+                this.state = state
+                this._renderDOM()
+                if (this.onStateChange) this.onStateChange(oldEl, this.el)
+            }
+            _renderDOM() {
+                this.el = createDOMFromString(this.render())
+                if (this.onClick) {
+                    this.el.addEventListener('click', this.onClick.bind(this), false)
+                }
+                return this.el
+            }
+        }
+
+        class LikeButton extends Component {
+            constructor() {
+                this.state = {
+                    isLiked: false
+                }
+            }
+
+            onClick() {
+                console.log('点击执行函数')
+                this.setState({
+                    isLiked: !this.state.isLiked
+                })
+            }
+            render() {
+                return `
+                    <button class='like-btn'>
+                    <span class='like-text'>${this.state.isLiked ? '取消' : '点赞'}</span>
+                    <span>👍</span>
+                    </button>
+                `
+            }
+        }
+
+        const container = document.querySelector('.wrapper');
+        let btn1 = new LikeButton();
+
+        console.log(btn1.render())
+
+
+        container.appendChild(btn1.render());
+
+        btn1.onStateChange = function(oldEl, newEl) {
+            console.log('查看正常逻辑数据')
+            container.insertBefore(newEl, oldEl);
+            container.removeChild(oldEl)
+        }
+    </script>
+
+</body>
+
+</html>

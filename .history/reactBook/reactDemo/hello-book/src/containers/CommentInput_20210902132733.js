@@ -69,16 +69,15 @@ class CommentInputContainer extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        comments: state.comments
+        // comments: state.comments
     }
 }
 
 
 const mapDispatchToProps = (dispatch) => {
-
   console.log('查看和使用redux')
-  console.log(dispatch)
 
+    console.log(dispatch)
     return {
         onSubmit: (comment) => {
             dispatch(addComment(comment))

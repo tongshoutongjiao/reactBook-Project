@@ -13,7 +13,9 @@ export default class CommentList extends Component {
     }
 
     handleDeleteComment(index) {
-
+        console.log('查看索引');
+        console.log(arguments)
+        console.log(index)
         if (this.props.onDeleteComment) {
             this.props.onDeleteComment(index)
         }

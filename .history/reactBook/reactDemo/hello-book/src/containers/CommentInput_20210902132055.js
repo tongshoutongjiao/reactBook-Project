@@ -76,9 +76,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 
-  console.log('查看和使用redux')
-  console.log(dispatch)
-
+    console.log(dispatch)
     return {
         onSubmit: (comment) => {
             dispatch(addComment(comment))

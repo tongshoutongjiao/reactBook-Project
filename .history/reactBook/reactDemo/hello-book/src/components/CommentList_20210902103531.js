@@ -13,7 +13,6 @@ export default class CommentList extends Component {
     }
 
     handleDeleteComment(index) {
-
         if (this.props.onDeleteComment) {
             this.props.onDeleteComment(index)
         }
@@ -21,15 +20,14 @@ export default class CommentList extends Component {
 
 
     render() {
-        return ( <div> {
-                this.props.comments.map((comment, i) => {
-                    return <Comment comment = { comment }
-                    key = { i }
-                    index = { i }
-                    onDeleteComment = { this.handleDeleteComment.bind(this) }> </Comment>
-                })
-            } </div>
-        )
+        return ( < div > {
+            this.props.comments.map((comment, i) => {
+                return <Comment comment = { comment }
+                key = { i }
+                index = { i }
+                onDeleteComment = { this.handleDeleteComment.bind(this) } > < /Comment>
+            })
+        } < /div>)
     }
 
 }

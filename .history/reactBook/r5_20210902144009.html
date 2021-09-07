@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>我的测试</div>
+    <div class="wrapper"></div>
+
+    <script>
+        console.log('查看渲染数据');
+
+        function createDOMFromString(str) {
+            let wrapper = document.createElement('div');
+            wrapper.innerHTML = str;
+            return wrapper;
+        }
+
+        class LikeButton {
+            constructor() {
+                this.state = {
+                    isLiked: false
+                }
+            }
+            setState(state) {
+                this.state = state;
+
+                this.oldEL = this.el;
+                this.newEl = this.render();
+                if (this.onChange) {
+                    this.onChange(this.oldEL, this.newEl)
+                }
+
+            }
+            changeLikeText() {
+
+                this.setState({
+                    isLiked: !this.state.isLiked
+                })
+            }
+            render() {
+                this.el = createDOMFromString(`
+                    <button class='like-btn'>
+                    <span class='like-text'>${this.state.isLiked ? '取消' : '点赞'}</span>
+                    <span>👍</span>
+                    </button>
+                `)
+                this.el.addEventListener('click', this.changeLikeText.bind(this), false)
+                return this.el
+            }
+        }
+
+        const container = document.querySelector('.wrapper');
+        let btn1 = new LikeButton();
+
+        console.log('查看container');
+        console.log(container)
+
+        container.appendChild(btn1.render());
+
+        btn1.onChange = function(oldEl, newEl) {
+            container.insertBefore(oldEl)
+
+
+
+        }
+    </script>
+
+</body>
+
+</html>
