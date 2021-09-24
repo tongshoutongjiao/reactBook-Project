@@ -62,7 +62,6 @@ const themeReducer = (state, action) => {
             return state
     }
 }
-
 const store = createStore(themeReducer)
 
 export default store

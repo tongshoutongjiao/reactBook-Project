@@ -6,37 +6,37 @@ import Content from './Content'
 import './index.css'
 
 
-function createStore(reducer) {
+function createStore (reducer) {
 
     //  getState subscribe licenses dispatch
 
     // 定义state 属性
-    let state = null;
+    let state=null;
+ 
+
+//    定义listeners 容器，存储订阅事件
+    let listeners=[]
 
 
-    //    定义listeners 容器，存储订阅事件
-    let listeners = []
-
-
-    //  定义订阅函数subscribe
-    const subscribe = (listener) => {
+//  定义订阅函数subscribe
+    const subscribe=(listener)=>{
         listeners.push(listener)
     }
 
-
+  
     //   定义获取数据的函数
-    const getState = () => state
-
+    const getState=()=>state
+    
 
     //   定义dispatch 函数
-    const dispatch = (state, action) => {
+    const dispatch=(action)=>{
         console.log('查看dispatch');
         console.log(action)
-        state = reducer(state, action);
-        listeners.forEach((listener) => listener())
+        state=reducer(state,action);
+        listeners.forEach((listener)=>listener())
 
     }
-
+ 
 
     //  执行dispatch 初始化state
     dispatch({})
@@ -50,19 +50,18 @@ function createStore(reducer) {
 const themeReducer = (state, action) => {
 
     //  初始化state 数据
-    if (!state) return {
-        themeColor: 'red'
-    }
+  if (!state) return {
+    themeColor: 'red'
+  }
 
-    //    执行函数操作数据
-    switch (action.type) {
-        case 'CHANGE_COLOR':
-            return {...state, themeColor: action.themeColor }
-        default:
-            return state
-    }
+//    执行函数操作数据
+  switch (action.type) {
+    case 'CHANGE_COLOR':
+      return { ...state, themeColor: action.themeColor }
+    default:
+      return state
+  }
 }
-
 const store = createStore(themeReducer)
 
 export default store
